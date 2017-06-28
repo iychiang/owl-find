@@ -7,7 +7,9 @@ A bare bones react starter set of files
 ```
 npm install
 ```
-
+```
+npm run build
+```
 ```
 npm start
 ```
