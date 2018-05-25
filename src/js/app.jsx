@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Spellchecker from './Spellchecker.jsx';
 import Definition from './Definition.jsx';
 
-export default class Hello extends Component {
+export default class App extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
+      id: 1,
       history: [],
       word: 'owl',
       wordObject: null,
@@ -25,6 +26,9 @@ export default class Hello extends Component {
   }
 
   handleClick(e) {
+    if (this.state.word == this.state.history[this.state.history.length - 1]) {
+      return;
+    }
 
     fetch(`/search/${this.state.word}`)
       .then(response => {
@@ -43,6 +47,7 @@ export default class Hello extends Component {
           // console.log(object);
 
           this.setState({
+            id: this.state.id + 1,
             word: this.state.word,
             wordObject: object,
             error: false
@@ -72,7 +77,7 @@ export default class Hello extends Component {
           <h2>What word are you looking for?</h2>
           <div className='toprow'>
             <div className='history'>
-              <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li>{word}</li>)}
+              <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li key={this.state.id}>{word}</li>)}
             </div>
             <div className='img'>
               <img src='OwlFind.png' />
@@ -82,7 +87,7 @@ export default class Hello extends Component {
             <input className='searchbox' type='text' placeholder='Type word here' onChange={this.handleSearchTerm} value={this.state.word} />
             <button className='button' type='submit' onClick={this.handleClick}>Go!</button>
           </div>
-          <div className='row text'>
+          <div>
             <div className='word'>
               <Spellchecker spelling={this.state.wordObject.spellingAPI[0].word} />
             </div>
@@ -96,7 +101,7 @@ export default class Hello extends Component {
           <div>
             <div className='toprow'>
               <div className='history'>
-                <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li key={word}>{word}</li>)}
+                <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li key={this.state.id}>{word}</li>)}
               </div>
               <div className='img'>
                 <img src='OwlFind.png' />
@@ -107,7 +112,7 @@ export default class Hello extends Component {
             <input className='searchbox' type='text' placeholder='Type word here' onChange={this.handleSearchTerm} value={this.state.word} />
             <button className='button' type='submit' onClick={this.handleClick}>Go!</button>
           </div>
-          <div className='row text'>
+          <div className={this.state.wordObject ? 'rowOfText' : ''}>
             <div className='word'>
               {this.state.history[this.state.history.length - 1]}
             </div>
