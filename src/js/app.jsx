@@ -77,7 +77,7 @@ export default class App extends Component {
           <h2>What word are you looking for?</h2>
           <div className='toprow'>
             <div className='history'>
-              <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li>{word}</li>)}
+              <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li key={JSON.stringify(word)}>{word}</li>)}
             </div>
             <div className='img'>
               <img src='OwlFind.png' />
@@ -101,7 +101,7 @@ export default class App extends Component {
           <div>
             <div className='toprow'>
               <div className='history'>
-                <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li>{word}</li>)}
+                <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li key={JSON.stringify(word)}>{word}</li>)}
               </div>
               <div className='img'>
                 <img src='OwlFind.png' />
