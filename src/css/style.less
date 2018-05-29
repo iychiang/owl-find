@@ -25,19 +25,25 @@ body {
 .toprow {
   padding: 5px;
   display: flex;
-  width: 79%;
-  justify-content: center;
+  width: 70%;
+  margin: auto;
 }
+
 
 .history {
   text-align: left;
   background-color: rgba(255, 247, 177, 0.747);
-  width: 170px;
-  margin-right: 20px;
+  width: 35%;
+  padding: 12px;
+  margin-right: 10px;
+  border-radius: 6px;
+  overflow: auto;
+}
+
+.emptydiv {
+  width: 35%;
   padding: 12px;
   border-radius: 6px;
-  height: 197px;
-  overflow: scroll;
 }
 
 .pastwords {
@@ -47,10 +53,6 @@ body {
 
 li {
   font-size: 14px;
-}
-
-.word {
-  font-size: 30px;
 }
 
 .definition {
@@ -82,6 +84,10 @@ li {
   justify-content: center;
 }
 
+.word {
+  font-size: 30px;
+}
+
 .rowOfText {
   background-color: rgba(255, 255, 255, 0.4);
   display: inline-block;
@@ -96,10 +102,16 @@ input[type='text'] {
 }
 
 img {
-  width: 400px;
+  justify-content: center;
+  width: 100%;
+}
+
+.img {
+  justify-content: center;
 }
 
 h2 {
   margin-top: 4%;
+  text-align: center;
 }
   

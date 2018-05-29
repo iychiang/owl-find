@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import Spellchecker from './Spellchecker.jsx';
-import Definition from './Definition.jsx';
+import Header from './TopRow/Header.jsx';
+import TopRow from './TopRow/TopRow.jsx';
+import InputRow from './MiddleRow/InputRow.jsx';
+
+import DefinitionView from './BottomRow/DefinitionView.jsx';
+import ErrorView from './BottomRow/ErrorView.jsx';
 
 export default class App extends Component {
 
@@ -41,10 +45,11 @@ export default class App extends Component {
           this.setState({
             error: this.state.word,
             wordObject: object
-          })
+          });
+          console.log(object);
         } else {
           object.word = this.state.word;
-          // console.log(object);
+          console.log(object);
           
           this.setState({
             id: this.state.id + 1,
@@ -72,54 +77,35 @@ export default class App extends Component {
 
   render() {
     if (this.state.error) {
+      console.log('error');
       return (
-        <div className='container'>
-          <h2>What word are you looking for?</h2>
-          <div className='toprow'>
-            <div className='history'>
-              <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li key={JSON.stringify(word)}>{word}</li>)}
-            </div>
-            <div className='img'>
-              <img src='OwlFind.png' />
-            </div>
-          </div>
-          <div className='inputRow'>
-            <input className='searchbox' type='text' placeholder='Type word here' onChange={this.handleSearchTerm} value={this.state.word} />
-            <button className='button' type='submit' onClick={this.handleClick}>Go!</button>
-          </div>
-          <div>
-            <div className='word'>
-              <Spellchecker spelling={this.state.wordObject.spellingAPI[0].word} />
-            </div>
-          </div>
+        <div>
+          <Header />
+          <TopRow history={this.state.history}/>
+          <InputRow handleSearchTerm={this.handleSearchTerm}
+                    value={this.state.word}
+                    handleClick={this.handleClick}/>
+          <ErrorView spellcheck={this.state.wordObject.spellingAPI[0].word == this.state.word 
+          ? 
+          this.state.wordObject.spellingAPI[1].word
+          :
+          this.state.wordObject.spellingAPI[0].word}/>
         </div>
       );
     } else {
+      console.log('no error');
       return (
-        <div className='container'>
-          <h2>What word are you looking for?</h2>
-          <div>
-            <div className='toprow'>
-              <div className='history'>
-                <span className='pastwords'>Past words: </span> {this.state.history.map(word => <li key={JSON.stringify(word)}>{word}</li>)}
-              </div>
-              <div className='img'>
-                <img src='OwlFind.png' />
-              </div>
-            </div>
-          </div>
-          <div className='inputRow'>
-            <input className='searchbox' type='text' placeholder='Type word here' onChange={this.handleSearchTerm} value={this.state.word} />
-            <button className='button' type='submit' onClick={this.handleClick}>Go!</button>
-          </div>
-          <div className={this.state.wordObject ? 'rowOfText' : ''}>
-            <div className='word'>
-              {this.state.history[this.state.history.length - 1]}
-            </div>
-            <Definition definition={this.state.wordObject && this.state.wordObject.wordAPI[0] && this.state.wordObject.wordAPI[0].definition}
-              type={this.state.wordObject && this.state.wordObject.wordAPI[0] && this.state.wordObject.wordAPI[0].type}
-              example={this.state.wordObject && this.state.wordObject.wordAPI[0] && this.state.wordObject.wordAPI[0].example} />
-          </div>
+        <div>
+          <Header />
+          <TopRow history={this.state.history}/>
+          <InputRow handleSearchTerm={this.handleSearchTerm}
+                    value={this.state.word}
+                    handleClick={this.handleClick}/>
+          {this.state.wordObject && this.state.wordObject.wordAPI[0] 
+          ? 
+          <DefinitionView wordObject={this.state.wordObject}
+                          history={this.state.history}/>
+          : ''}                
         </div>
       );
     }
