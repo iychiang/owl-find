@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
 import Header from './TopRow/Header.jsx';
 import TopRow from './TopRow/TopRow.jsx';
 import InputRow from './MiddleRow/InputRow.jsx';
@@ -21,20 +23,28 @@ export default class App extends Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleSearchTerm = this.handleSearchTerm.bind(this);
+    this.getResults = this.getResults.bind(this);
   }
 
   componentWillMount() {
     //goes once page loaded? if wanted to let user type /definition AND get definition on click, then probably
     //will have in two different places... one in componentDidMount and one under the click function
     //ask Anthony about react router after done
+    //Get the URL path name
+    const path = this.props.location.pathname
+
+    //If the path is not / but like /owl
+    if(path !== '/') {
+      // replace path with just the word owl
+      const word = path.replace('/', '');
+
+      // fetch results with the word owl
+      this.getResults(word);
+    }
   }
 
-  handleClick(e) {
-    if (this.state.word == this.state.history[this.state.history.length - 1]) {
-      return;
-    }
-
-    fetch(`/search/${this.state.word}`)
+  getResults(word = this.state.word) {
+    fetch(`/search/${word}`)
       .then(response => {
         return response.json();
       })
@@ -43,22 +53,22 @@ export default class App extends Component {
         //error occurs if word is not found
         if (object.wordAPI.length == 0) {
           this.setState({
-            error: this.state.word,
+            error: word,
             wordObject: object
           });
           console.log(object);
         } else {
-          object.word = this.state.word;
+          object.word = word;
           console.log(object);
           
           this.setState({
             id: this.state.id + 1,
-            word: this.state.word,
+            word: word,
             wordObject: object,
             error: false
           });
           console.log(this.state.wordObject);
-          let newEntry = [...this.state.history, this.state.word];
+          let newEntry = [...this.state.history, word];
 
           this.setState({
             history: newEntry
@@ -66,6 +76,14 @@ export default class App extends Component {
         }
       })
       .catch(console.error);
+  }
+
+  handleClick(e) {
+    if (this.state.word == this.state.history[this.state.history.length - 1]) {
+      return;
+    }
+
+    this.getResults();
   }
 
   handleSearchTerm(e) {

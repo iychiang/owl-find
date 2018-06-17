@@ -4,8 +4,11 @@ export default class OwlFind extends Component {
 
   render() {
     return (
-        <div className='img'>
-          <img src='OwlFind.png' />
+        <div className='imgContainer'>
+          <img src='OwlFindDay.png' />
+          <div className='overlay'>
+          <img src='OwlFindNight.png'/>
+          </div>
         </div>
     );
   }

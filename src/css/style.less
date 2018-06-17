@@ -102,12 +102,9 @@ input[type='text'] {
 }
 
 img {
+  display: block;
   justify-content: center;
   width: 100%;
-}
-
-.img {
-  justify-content: center;
 }
 
 .history div {
@@ -124,4 +121,24 @@ h2 {
   margin-top: 4%;
   text-align: center;
 }
-  
+
+// img:hover {
+//   opacity: 0;
+//   transition: .5s ease;
+// }
+
+.overlay {
+  position: absolute;
+  // top: 0;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  // height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 2s ease;
+}
+
+.imgContainer:hover .overlay {
+  opacity: 1;
+}
