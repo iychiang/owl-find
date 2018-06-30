@@ -6,7 +6,7 @@ export default class History extends Component {
     return (
       <div className='history'>
         <div>
-          <span className='pastwords'>Past words: </span> {this.props.history.map(word => <li key={JSON.stringify(word)}>{word}</li>)}
+          <span className='pastwords'></span> {this.props.history.map(word => <li key={JSON.stringify(word)}>{word}</li>)}
         </div>
       </div>
     );

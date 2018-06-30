@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
-import Header from './TopRow/Header.jsx';
-import TopRow from './TopRow/TopRow.jsx';
-import InputRow from './MiddleRow/InputRow.jsx';
-
-import DefinitionView from './BottomRow/DefinitionView.jsx';
-import ErrorView from './BottomRow/ErrorView.jsx';
+import Header from './Header/Header';
+import History from './History/History';
+import InputRow from './Input/InputRow';
+import DefinitionView from './DefinitionError/DefinitionView';
+import ErrorView from './DefinitionError/ErrorView';
 
 export default class App extends Component {
 
@@ -99,10 +98,10 @@ export default class App extends Component {
       return (
         <div>
           <Header />
-          <TopRow history={this.state.history}/>
+          <History history={this.state.history}/>
           <InputRow handleSearchTerm={this.handleSearchTerm}
-                    value={this.state.word}
-                    handleClick={this.handleClick}/>
+                  value={this.state.word}
+                  handleClick={this.handleClick}/>
           <ErrorView spellcheck={this.state.wordObject.spellingAPI[0].word == this.state.word 
           ? 
           this.state.wordObject.spellingAPI[1].word
@@ -115,10 +114,10 @@ export default class App extends Component {
       return (
         <div>
           <Header />
-          <TopRow history={this.state.history}/>
+          <History history={this.state.history}/>
           <InputRow handleSearchTerm={this.handleSearchTerm}
-                    value={this.state.word}
-                    handleClick={this.handleClick}/>
+                  value={this.state.word}
+                  handleClick={this.handleClick}/>
           {this.state.wordObject && this.state.wordObject.wordAPI[0] 
           ? 
           <DefinitionView wordObject={this.state.wordObject}

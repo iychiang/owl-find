@@ -1,9 +1,29 @@
+html {
+  margin: 0em;
+  padding: 0em;
+  -webkit-font-smoothing: anti-aliased;
+  background: #ffd89b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #19547b, #ffd89b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient( #19547b, #ffd89b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: -webkit-fill-available;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 body {
+  margin: 0em;
+  padding: 0em;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #67abd8;
   text-align: center;
 }
-  
+
+#root {
+  background-image: url('/OwlFindDay.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: -webkit-fill-available;
+}
+
 .button {
   height: 36px;
   font-size: 14px;
@@ -18,32 +38,18 @@ body {
 }
   
 .searchbox {
-  width: 25%;
   height: 30px;
 }
-  
-.toprow {
-  padding: 5px;
-  display: flex;
-  width: 70%;
-  margin: auto;
-}
-
 
 .history {
   text-align: left;
-  background-color: rgba(255, 247, 177, 0.747);
-  width: 35%;
-  padding: 12px;
-  margin-right: 10px;
-  border-radius: 6px;
-  overflow: auto;
-}
-
-.emptydiv {
-  width: 35%;
-  padding: 12px;
-  border-radius: 6px;
+  margin: auto;
+  // background-color: rgba(255, 247, 177, 0.747);
+  width: 60%;
+  // padding: 1em;
+  // border-radius: 6px;
+  // overflow: auto;
+  min-height: 5em;
 }
 
 .pastwords {
@@ -52,7 +58,10 @@ body {
 }
 
 li {
-  font-size: 14px;
+  font-family: 'Muli', sans-serif;
+  font-size: 1.3em;
+  color: #fafafa;
+  list-style-type: none;
 }
 
 .definition {
@@ -78,14 +87,21 @@ li {
   text-decoration: underline;
 }
 
-.inputRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+// .inputRow {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
 
 .word {
   font-size: 30px;
+}
+
+.toprow {
+  justify-content: center;
+  margin-top: 5em;
+  min-height: 5em;
+  display: flex;
 }
 
 .rowOfText {
@@ -93,7 +109,7 @@ li {
   display: inline-block;
   align-items: center;
   padding: 10px 15px 15px 15px;
-  margin-top: 10px;
+  margin-top: 2em;
   border-radius: 6px;
 }
 
@@ -101,44 +117,39 @@ input[type='text'] {
   font-size: 20px;
 }
 
-img {
-  display: block;
-  justify-content: center;
-  width: 100%;
-}
+// .imgContainer {
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+// }
 
-.history div {
-    text-align: left;
-    padding: 5px;
-    margin-right: 10px;
-    border-radius: 6px;
-    overflow: scroll;
-    position: absolute;
-    height: 188px;
-}
-
-h2 {
-  margin-top: 4%;
+h1 {
+  margin: 0em;
+  padding-top: 3.5em;
+  padding-bottom: 1.5em;
+  letter-spacing: 0.5px;
   text-align: center;
+  font-family: 'Muli', sans-serif;
+  color: #fafafa;
 }
 
-// img:hover {
-//   opacity: 0;
+// .overlay:hover {
+//   opacity: 1;
 //   transition: .5s ease;
 // }
 
-.overlay {
-  position: absolute;
-  // top: 0;
-  // bottom: 0;
-  // left: 0;
-  // right: 0;
-  // height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: 2s ease;
-}
+// .overlay {
+//   position: absolute;
+//   // top: 0;
+//   // bottom: 0;
+//   // left: 0;
+//   // right: 0;
+//   height: 100%;
+//   width: 100%;
+//   opacity: 0;
+//   transition: 1s ease;
+// }
 
-.imgContainer:hover .overlay {
-  opacity: 1;
-}
+// .imgContainer:hover .overlay {
+//   opacity: 1;
+// }
