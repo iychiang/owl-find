@@ -1,6 +1,6 @@
 # __Owl Find__
 
-![img](./public/OwlFindSS.png)
+![img](/public/OwlFindSS2.png)
 
 What word are you looking for? Owl Find will help look up words you may not know using the Owlbot API-- great for English language learners and those looking for a simpler dictionary experience!
 
