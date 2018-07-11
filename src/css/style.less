@@ -44,16 +44,11 @@ body {
 .history {
   text-align: left;
   margin: auto;
-  // background-color: rgba(255, 247, 177, 0.747);
   width: 60%;
-  // padding: 1em;
-  // border-radius: 6px;
-  // overflow: auto;
   min-height: 5em;
 }
 
 .pastwords {
-  text-decoration: underline;
   font-size: 15px;
 }
 
@@ -131,6 +126,14 @@ h1 {
   text-align: center;
   font-family: 'Muli', sans-serif;
   color: #fafafa;
+}
+
+.pastwords {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: column;
 }
 
 // .overlay:hover {
