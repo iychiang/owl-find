@@ -4,10 +4,10 @@ export default class InputRow extends Component {
 
   render() {
     return (
-      <div className='inputRow'>
+      <form className='inputRow' onSubmit={this.props.handleClick}>
         <input className='searchbox' type='text' placeholder='Type word here' onChange={this.props.handleSearchTerm} value={this.props.value} />
-        <button className='button' type='submit' onClick={this.props.handleClick}>Go!</button>
-      </div>
+        <button className='button' type='submit'>Go!</button>
+      </form>
     )
   }
 }

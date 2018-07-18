@@ -47,7 +47,8 @@ export default class App extends Component {
       .then(response => {
         return response.json();
       })
-      //every time there's a return statement in a .then, the next .then will implicitly send that value to the next .then (and you can name it whatever you want)
+      //every time there's a return statement in a .then, 
+      //the next .then will implicitly send that value to the next .then (and you can name it whatever you want)
       .then((object) => {
         //error occurs if word is not found
         if (object.wordAPI.length == 0) {
@@ -78,6 +79,7 @@ export default class App extends Component {
   }
 
   handleClick(e) {
+    e.preventDefault();
     if (this.state.word == this.state.history[this.state.history.length - 1]) {
       return;
     }
