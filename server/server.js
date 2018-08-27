@@ -6,7 +6,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(express.static('dist'));
-app.use(express.static('public'));
+app.use(express.static('docs'));
 
 app.get('/search/:word', (req, res) => {
   // console.log('testing');
@@ -33,7 +33,7 @@ app.get('/search/:word', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.sendFile('/public/index.html', {root: './'});
+  res.sendFile('/docs/index.html', {root: './'});
 });
 
 module.exports = app;

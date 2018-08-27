@@ -8,7 +8,7 @@ const axios = require('axios');
 let nightmare;
 
 const app = express();
-app.use(express.static(path.join(__dirname, '/../public')));
+app.use(express.static(path.join(__dirname, '/../docs')));
 app.use(express.static(path.join(__dirname, '/../dist')));
 
 app.listen(8888);
