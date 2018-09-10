@@ -11,4 +11,6 @@ What word are you looking for? Owl Find will help look up words you may not know
 -Part of speech and definition of word  
 -Word used in a sentence
 
+[View Owl Find live!](https://startnow-node200-ejs-portfolio-dyvdchrcxb.now.sh)
+
 Built with React, Less, Node, Express, and the OwlBot API
