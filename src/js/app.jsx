@@ -81,7 +81,6 @@ export default class App extends Component {
 
   render() {
     if (this.state.error) {
-      console.log('error');
       return (
         <div>
           <Header />
@@ -97,7 +96,6 @@ export default class App extends Component {
         </div>
       );
     } else {
-      console.log('no error');
       return (
         <div>
           <Header />
